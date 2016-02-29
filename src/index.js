@@ -22,6 +22,7 @@ function start(options) {
     app.use(routes);
     
     toolkit.context = context;
+    toolkit.request = require('./components/request');
 
     var server = app.listen(opt.port);
 
