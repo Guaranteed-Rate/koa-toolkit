@@ -7,7 +7,9 @@ function start(options) {
     var stitcher = require('./components/stitcher');
     var opt = Object.assign({}, options);
     var routes = require('./components/routes')(options.routes);
+    var cors = require('kcors');
     
+    app.use(cors());
     app.use(context);
     app.use(stitcher);
     if (opt.metrics) {
