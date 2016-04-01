@@ -25,6 +25,9 @@ function start(options) {
     
     toolkit.context = context;
     toolkit.request = require('./components/request');
+    if (opt.db) {
+        toolkit.db = require('./components/db')(opt.db);
+    }    
 
     var server = app.listen(opt.port);
 
