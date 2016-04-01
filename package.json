@@ -1,6 +1,6 @@
 {
   "name": "koa-toolkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get up and running a RESTful API in no time with this package that streamlines configuring commonly used node packages.",
   "main": "src/index.js",
   "scripts": {
