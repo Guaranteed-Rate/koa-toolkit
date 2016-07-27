@@ -6,6 +6,17 @@ function config(options) {
     var db = require('any-db');
     var pool = db.createPool(opt.url, opt.poolConfig);
     var db = {};
+    db.executePromise = function (sql, params) {
+        return new Promise((resolve, reject) => {
+            pool.query(sql, params, (error, result) => {
+                if (error) {
+                    toolkit.logger.error('failed to execute sql command: ', { sql: sql, params: params, error: error, connection: opt.url });
+                    return reject(error);
+                }
+                return resolve(result.rows);
+            });
+        })
+    };
     db.execute = function(sql, params) {
         return function(callback) {
             pool.query(sql, params, (error, result) => {
